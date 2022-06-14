@@ -1,4 +1,5 @@
 @extends('layouts.master')
 @section('content')
-bonjour
+coucou
+
 @endsection
