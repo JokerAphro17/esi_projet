@@ -23,5 +23,8 @@ Route::get('/dashboard', function () {
 Route::get('/carte', function (){
     return view('carte');
 });
+Route::get('/secretaire', function (){
+    return view('secretaire');
+})->name('secretaire');
 
 require __DIR__.'/auth.php';
