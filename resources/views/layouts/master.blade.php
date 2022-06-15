@@ -64,13 +64,13 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>GESTIONS DES CARTES</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('secretaire')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>AJOUT D'UN SECRETAIRE</p>
                                     </a>
@@ -108,5 +108,6 @@
 <script defer>
     $(document).ready( function () {
     $('#myTable').DataTable();
+    $('#myTable1').DataTable();
 } );
 </script>

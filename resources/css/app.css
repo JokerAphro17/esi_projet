@@ -5,4 +5,9 @@
     border : 1px solid #ccc;
     box-shadow: 0 0 8px #ccc;
 }
-
+.carte{
+    border : 1px solid #ccc;
+    box-shadow: 0 0 8px #ccc;
+    width: 800px;
+    height: 500px;
+}   
