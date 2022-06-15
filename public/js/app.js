@@ -17692,7 +17692,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-__webpack_require__(/*! ./index */ "./resources/js/index.js");
+__webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module './index'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 /***/ }),
 
@@ -17724,41 +17724,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
-
-/***/ }),
-
-/***/ "./resources/js/index.js":
-/*!*******************************!*\
-  !*** ./resources/js/index.js ***!
-  \*******************************/
-/***/ (() => {
-
-$("#btn").click(function () {
-  $("#list").toggleClass("d-none");
-
-  if ($("#list").hasClass("d-none")) {
-    $("#btn").text("LISTER LES ETUDIANTS");
-    $("#title").text("FORMULAIRE D'ENREGISTREMENT");
-  } else {
-    $("#btn").text("AJOUTER UN ETUDIANT");
-    $("#title").text("LISTE DES ETUDIANTS");
-  }
-
-  $("#form").toggleClass("d-none");
-});
-$("#btn1").click(function () {
-  $("#list1").toggleClass("d-none");
-
-  if ($("#list1").hasClass("d-none")) {
-    $("#btn1").text("LISTER LES SECRETAIRE");
-    $("#title2").text("FORMULAIRE D'ENREGISTREMENT SECRETAIRE");
-  } else {
-    $("#btn1").text("AJOUTER UN SECRETAIRE");
-    $("#title2").text("LISTE DES SECRETAIRES");
-  }
-
-  $("#form1").toggleClass("d-none");
-});
 
 /***/ }),
 
