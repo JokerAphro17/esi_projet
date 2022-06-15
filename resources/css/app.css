@@ -1,13 +1,3 @@
-@import '~admin-lte/plugins/fontawesome-free/css/all.min.css';
-@import '~admin-lte/dist/css/adminlte.css';
-
-.form{
-    border : 1px solid #ccc;
-    box-shadow: 0 0 8px #ccc;
-}
-.carte{
-    border : 1px solid #ccc;
-    box-shadow: 0 0 8px #ccc;
-    width: 800px;
-    height: 500px;
-}   
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
