@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+<<<<<<< HEAD
 <div class="row justify-content-evenly">
     <div class="col-md-6">
         <h2 id="title">FORMULAIRE D'INSCRIPTION</h2>
@@ -76,5 +77,8 @@
         <button type="submit" class="btn btn-primary">AJOUTER</button>
     </form>
 </div>
+=======
+coucou
+>>>>>>> deb4ba63c7c48ae4009c8243cb010c143c934441
 
 @endsection
