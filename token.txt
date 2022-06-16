@@ -1,3 +1,24 @@
 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
 
+require("./bootstrap");
+import "admin-lte/plugins/jquery/jquery.min";
+import "admin-lte/plugins/bootstrap/js/bootstrap.bundle.min";
+import "admin-lte/dist/js/adminlte.min";
+import "admin-lte/plugins/datatables/jquery.dataTables.js";
+require("./index");
+
+@import '~admin-lte/plugins/fontawesome-free/css/all.min.css';
+@import '~admin-lte/dist/css/adminlte.css';
+
+.form{
+    border : 1px solid #ccc;
+    box-shadow: 0 0 8px #ccc;
+}
+.carte{
+    border : 1px solid #ccc;
+    box-shadow: 0 0 8px #ccc;
+    width: 800px;
+    height: 500px;
+}   
+
 
