@@ -9,7 +9,6 @@
         <div id="btn" class="btn btn-primary float-right">LISTE DES ETUDIANTS</div>
     </div>
 </div>
-
 <div class="card-body table-responsive p-3 d-none" id="list" style="height: 500px;">
     <table class="table table-head-fixed text-nowrap" id="myTable">
         <thead>
@@ -78,6 +77,4 @@
         <button type="submit" class="btn btn-primary">AJOUTER</button>
     </form>
 </div>
-
-
 @endsection
