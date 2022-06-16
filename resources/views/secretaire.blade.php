@@ -3,7 +3,7 @@
 
 <div class="row justify-content-evenly">
     <div class="col-md-6">
-        <h3 id="title2">FORMULAIRE D'INSCRIPTION D'UN SECRETAIRE</h3>
+        <h3 id="title2"></h3>
     </div>
     <div class="col-md-6">
         <div id="btn1" class="btn btn-primary float-right">LISTE DES SECRETAIRE</div>
@@ -42,6 +42,8 @@
 <div class="card-body" id="form1" class="row justify-content-center">
     <form action="route('secretaire.store')" method="POST" class="p-5 form col-6 offset-3 ">
         @csrf
+        <h2 class="text-center">FORMULAIRE D'INSCRIPTION</h2>
+
         <div class="form-group">
             <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
         </div>

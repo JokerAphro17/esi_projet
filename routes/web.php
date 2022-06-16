@@ -15,14 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware(['auth']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
+ 
 Route::get('/secretaire', function () {
     return view('secretaire');
-})->name('secretaire');
-// ->middleware(['auth'])->name('secretaire');
+})->middleware(['auth'])->name('secretaire');
+Route::get('/carte',function(){
+    return view ('carte');
+})->name("carte");
 require __DIR__.'/auth.php';

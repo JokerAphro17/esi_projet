@@ -11,7 +11,9 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{asset('css/app1.css')}}" />
     @livewireStyles
 </head>
@@ -26,21 +28,28 @@
                         <i class="fas fa-th-logout"></i>
                     </a>
                 </li>
+
             </ul>
+            <form action="{{route('logout')}}" method="post">
+                @csrf
+                <button class="btn btn-primary" type="submit"><i class="fa-solid fa-arrow-right-from-bracket " style="
+                        width:50%;
+                        "></i></button>
+            </form>
         </nav>
 
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <a href="index3.html" class="brand-link">
-                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: 0.8" />
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <a href="/" class="brand-link">
+                <img src="{{asset('logo.jpeg')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-5"
+                    style="opacity: 1" />
+                <span class="brand-text font-weight-light">ESI/UNB</span>
             </a>
 
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
 
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">{{auth()->user()->name}}</a>
                     </div>
                 </div>
 
@@ -58,23 +67,25 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link active">
+                                    <a href="{{route('secretaire')}}" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>GESTION DES ETUDIANT</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link">
+                                    <a class="nav-link" href="{{route('carte')}}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>GESTIONS DES CARTES</p>
                                     </a>
                                 </li>
+                                @if(auth()->user()->role_id)
                                 <li class="nav-item">
                                     <a href="{{route('secretaire')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>AJOUT D'UN SECRETAIRE</p>
                                     </a>
                                 </li>
+                                @endif
                             </ul>
                         </li>
 
