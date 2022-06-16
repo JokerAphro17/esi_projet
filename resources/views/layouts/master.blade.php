@@ -12,7 +12,7 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
 
-    <link rel="stylesheet" href="{{asset('css/app.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/app1.css')}}" />
     @livewireStyles
 </head>
 
@@ -97,8 +97,8 @@
         </footer>
     </div>
 
-    <script src="{{asset('js/app.js')}}"></script>
-    dsfj
+    <script src="{{asset('js/app1.js')}}"></script>
+
     @livewireScripts
 
     </body>

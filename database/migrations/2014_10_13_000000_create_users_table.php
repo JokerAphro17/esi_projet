@@ -17,12 +17,12 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $tabele->string('role')->default('admin');
             $table->timestamp('email_verified_at')->nullable();
+            $table->bigInteger('role_id')->unsigned()->default(1);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->foreignkey('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
         });
     }
 
