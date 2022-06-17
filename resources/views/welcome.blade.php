@@ -57,24 +57,27 @@
             <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
         </div>
         <div class="form-group">
+        </div class="form-group">
+        <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+</div>
 
-            <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prenom">
-        </div>
-        <div class="form-group">
+<input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prenom">
+</div>
+<div class="form-group">
 
-            <input type="text" class="form-control" id="cycle" name="cycle" placeholder="Cycle">
-        </div>
-        <div class="form-group">
+    <input type="text" class="form-control" id="cycle" name="cycle" placeholder="Cycle">
+</div>
+<div class="form-group">
 
-            <input type="text" class="form-control" id="niveau" name="niveau" placeholder="Niveau">
-        </div>
-        <div class="form-group">
+    <input type="text" class="form-control" id="niveau" name="niveau" placeholder="Niveau">
+</div>
+<div class="form-group">
 
-            <input type="text" class="form-control" id="annee_academique" name="annee_academique"
-                placeholder="Annee Accademique">
-        </div>
+    <input type="text" class="form-control" id="annee_academique" name="annee_academique"
+        placeholder="Annee Accademique">
+</div>
 
-        <button type="submit" class="btn btn-primary">AJOUTER</button>
-    </form>
+<button type="submit" class="btn btn-primary">AJOUTER</button>
+</form>
 </div>
 @endsection

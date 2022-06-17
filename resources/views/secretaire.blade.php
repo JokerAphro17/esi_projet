@@ -60,7 +60,7 @@
             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
                 placeholder="Confirm Password">
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-12 justify-content-center">
             <button type="submit" class="btn btn-primary">Enregistrer</button>
         </div>
         @endsection
