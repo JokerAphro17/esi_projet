@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
@@ -14,9 +15,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware(['auth'])->name('home');
+Route::get('/', [EtudiantController::class,'index'])->middleware(['auth'])->name('home');
 
 Route::post('/add', [AuthenticatedSessionController::class, 'addSecretary'])->name('sec');
 
@@ -24,6 +23,6 @@ Route::post('/add', [AuthenticatedSessionController::class, 'addSecretary'])->na
 Route::get('/secretaire', function () {return view('secretaire');})->middleware(['auth'])->name('secretaire');
 Route::get('/carte',function(){return view ('carte');})->name("carte");
 
-Route::resource('/etudiant','EtudiantController')->middleware(['auth']);
-
+Route::resource('/etudiant', EtudiantController::class)->middleware(['auth']);
+   
 require __DIR__.'/auth.php';

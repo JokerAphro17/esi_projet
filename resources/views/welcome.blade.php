@@ -9,7 +9,7 @@
         <div id="btn" class="btn btn-primary float-right">LISTE DES ETUDIANTS</div>
     </div>
 </div>
-<div class="card-body table-responsive p-3 d-none" id="list" style="height: 500px;">
+<div class="card-body table-responsive p-0 d-none" id="list" style="height: 500px;">
     <table class="table table-head-fixed text-nowrap" id="myTable">
         <thead>
             <tr>
@@ -23,23 +23,40 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($etudiants as $etudiant)
             <tr>
-                <td>45EHDH</td>
-                <td>BOUKHARI</td>
-                <td>Abdou</td>
-                <td>Licence</td>
-                <td>L1</td>
-                <td>2019-2020</td>
-                <td>
-                    {{-- <a href="{{ route('etudiant.edit', $etudiant->id) }}" class="btn btn-primary">Modifier</a>
-                    <form action="{{ route('etudiant.destroy', $etudiant->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Supprimer</button>
-                    </form> --}}
+                <td>{{
+                    $etudiant->matricule
+                    }}</td>
+                <td>{{
+                    $etudiant->nom
+                    }}</td>
+                <td>{{
+                    $etudiant->prenom
+                    }}</td>
+                <td>{{
+                    $etudiant->cycle
+                    }}</td>
+                <td>{{
+                    $etudiant->niveau
+                    }}</td>
+                <td>{{
+                    $etudiant->annee
+                    }}</td>
+                <td class="text-center">
+                    <a href="{{ route('etudiant.edit', $etudiant->id) }}">
+                        <i class="fas fa-edit  " style="font-size: 35px"></i>
+                    </a>
+                    <span id="deleteStudent" class="deleteStudent m-3 text-danger" style="cursor: pointer;"
+                        data-id="{{ $etudiant->id }}">
+                        <i class="fas fa-trash-alt" style="font-size: 35px"></i>
+                    </span>
+                    <a href="{{ route('etudiant.show', $etudiant->id) }}">
+                        <i class="fa-solid fa-id-card-clip" alt="supprimer" style="font-size: 35px"></i>
+                    </a>
                 </td>
-
             </tr>
+            @endforeach
 
         </tbody>
     </table>
@@ -71,6 +88,9 @@
         <div class="form-group">
             <input type="text" class="form-control" id="annee_academique" name="annee_academique"
                 placeholder="Annee Accademique">
+        </div>
+        <div class="form-group">
+            <input type="file" class="form-control btn" id="photo" name="photo" placeholder="Photo">
         </div>
         <button type="submit" class="btn btn-primary">AJOUTER</button>
     </form>
