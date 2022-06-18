@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
+use App\Http\Requests\Auth\LoginRequest;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -19,7 +21,24 @@ class AuthenticatedSessionController extends Controller
     {
         return view('auth.login');
     }
+    public function addSecretary(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
 
+        $user = User::create([
+            'role_id' => 0,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+           
+        ]);
+        return redirect()->route('secretaire')
+                         ->with('success','Secretaire created successfully');
+    }
     /**
      * Handle an incoming authentication request.
      *

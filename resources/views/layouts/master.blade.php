@@ -67,7 +67,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{route('secretaire')}}" class="nav-link active">
+                                    <a href="/" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>GESTION DES ETUDIANT</p>
                                     </a>

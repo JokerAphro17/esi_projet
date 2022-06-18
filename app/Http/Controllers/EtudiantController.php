@@ -48,7 +48,6 @@ class EtudiantController extends Controller
        Etudiant::create($request->all());           
        return redirect()->route('etudiant.index')
                         ->with('success','Etudiant created successfully');
-
     }
 
     /**
@@ -74,7 +73,8 @@ class EtudiantController extends Controller
     {
         $etudiant = Etudiant::find($id);
         $etudiant->update($request->all());
-        $
+        return redirect()->route('home')
+                        ->with('success','Etudiant updated successfully');
     }
 
     /**

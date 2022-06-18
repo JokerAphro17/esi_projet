@@ -40,16 +40,14 @@
     </table>
 </div>
 <div class="card-body" id="form1" class="row justify-content-center">
-    <form action="route('secretaire.store')" method="POST" class="p-5 form col-6 offset-3 ">
+    <form action="/add" method="POST" class="p-5 form col-6 offset-3 ">
         @csrf
         <h2 class="text-center">FORMULAIRE D'INSCRIPTION</h2>
 
         <div class="form-group">
-            <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
+            <input type="text" class="form-control" id="nom" name="name" placeholder="Nom">
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Prenom">
-        </div>
+
         <div class="form-group">
             <input type="email" class="form-control" id="email" name="email" placeholder="Email">
         </div>
