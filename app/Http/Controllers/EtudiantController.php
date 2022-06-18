@@ -45,21 +45,10 @@ class EtudiantController extends Controller
             'email' => 'required|string|max:255',
         ]);
 
-       Etudiant::create($request->all());
-        
+       Etudiant::create($request->all());           
+       return redirect()->route('etudiant.index')
+                        ->with('success','Etudiant created successfully');
 
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -70,7 +59,8 @@ class EtudiantController extends Controller
      */
     public function edit($id)
     {
-        //
+        $etudiant = Etudiant::find($id);
+        return view('etudiant.edit',compact('etudiant')); 
     }
 
     /**
@@ -82,7 +72,9 @@ class EtudiantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $etudiant = Etudiant::find($id);
+        $etudiant->update($request->all());
+        $
     }
 
     /**
