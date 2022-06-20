@@ -63,9 +63,19 @@
 </div>
 
 <div class="card-body" id="form" class="row justify-content-center">
-    <form action="route('etudiant.store')" method="POST" class="p-5 form col-6 offset-3 ">
+    <form enctype="multipart/form-data" action="{{route('etudiant.store')}}" method="POST"
+        class="p-5 form col-6 offset-3 ">
         @csrf
         <h2 id="title">FORMULAIRE D'INSCRIPTION</h2>
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <div class="form-group">
             <input type="text" class="form-control" id="matricule" name="matricule" placeholder="Matricule">
         </div>
@@ -86,11 +96,10 @@
             <input type="text" class="form-control" id="niveau" value="L1" readonly name="niveau" placeholder="Niveau">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" id="annee_academique" name="annee_academique"
-                placeholder="Annee Accademique">
+            <input type="text" class="form-control" id="annee_academique" name="annee" placeholder="Annee Accademique">
         </div>
         <div class="form-group">
-            <input type="file" class="form-control btn" id="photo" name="photo" placeholder="Photo">
+            <input type="file" class="form-control btn" id="file" name="file" placeholder="Photo">
         </div>
         <button type="submit" class="btn btn-primary">AJOUTER</button>
     </form>

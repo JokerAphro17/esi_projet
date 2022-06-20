@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Etudiant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EtudiantController extends Controller
 {
@@ -26,7 +27,7 @@ class EtudiantController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -37,20 +38,31 @@ class EtudiantController extends Controller
      */
     public function store(Request $request)
     {   
-        validate($request, [
-            'matricule' => 'required|string|max:255',
-            'nom' => 'required|string|max:255',
-            'prenom' => 'required|string|max:255',
-            'cycle' => 'required|string|max:255',
-            'niveau' => 'required|string|max:255',
-            'annee' => 'required|string|max:255',
-            'photo' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
-        ]);
+       // validate the form data
+         $this->validate($request, [
+             'matricule' => 'required|unique:etudiants',
+          'nom' => 'required',
+          'prenom' => 'required',
+            'email' => 'required',
+            'cycle' => 'required',
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'annee' => 'required']);
+        $dest_path = 'public/images/etudiants';
+        $file_name = $request->file('file')->getClientOriginalName();
+        $request->file('file')->storeAs($dest_path, $file_name);
+        $etudiant = new \App\Models\Etudiant;
+        $etudiant->nom = $request->nom;
+        $etudant->matricule = $request->matricule;
+        $etudiant->prenom = $request->prenom;
+        $etudiant->email = $request->email;
+        $etudiant->cycle = $request->cycle;
+        $etudiant->annee = $request->annee;
+        $etudiant->photo = $file_name;
+        $etudiant->save();
 
-       Etudiant::create($request->all());           
-       return redirect()->route('etudiant.index')
-                        ->with('success','Etudiant created successfully');
+      
+    
+       return redirect()->route('home')->with('success', 'Etudiant ajouté avec succès');
     }
 
     /**

@@ -113,6 +113,7 @@
     @livewireScripts
 
     </body>
+    @include('flash-message')
 
 </html>
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
