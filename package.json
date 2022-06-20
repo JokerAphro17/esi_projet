@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "admin-lte": "^3.0",
-        "jspdf": "^2.5.1"
+        "jspdf": "^2.5.1",
+        "sweetalert": "^2.1.2"
     }
 }

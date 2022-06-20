@@ -67,6 +67,7 @@
         </div>
     </div>
 </div>
+<input id="id" type="hidden" value="{{$etudiant->id}}">
 <div id="btn-pdf" class="btn btn-primary">
     <i class="fa-solid fa-file-pdf"></i>
     IMPRIMER

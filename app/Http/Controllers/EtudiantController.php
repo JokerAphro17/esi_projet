@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Dotenv\Util\Str;
+use App\Mail\carteMail;
 use App\Models\Etudiant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class EtudiantController extends Controller
@@ -110,5 +112,17 @@ class EtudiantController extends Controller
     {
         $etudiant = Etudiant::find($id);
         return view('carte',compact('etudiant')); 
+    }
+    public function sendMail($id)
+    {
+        $etudiant = Etudiant::find($id);
+        $user = ['nom'=>$etudiant->nom,
+                    'prenom'=>$etudiant->prenom, 
+                    'email'=>$etudiant->email,
+                    'matricule'=>$etudiant->matricule];
+        Mail::to($user['email'])->send(new carteMail(
+            $user
+        ));
+        
     }
 }

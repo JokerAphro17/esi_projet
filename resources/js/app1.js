@@ -5,6 +5,7 @@ import "admin-lte/plugins/bootstrap/js/bootstrap.bundle.min";
 import "admin-lte/dist/js/adminlte.min";
 import "admin-lte/plugins/datatables/jquery.dataTables.js";
 import jspdf from "jspdf";
+import swal from "sweetalert";
 import { get } from "lodash";
 $("#btn").click(function () {
     $("#list").toggleClass("d-none");
@@ -35,6 +36,14 @@ $(document).ready(function () {
         doc.html(carte, {
             callback: function (doc) {
                 doc.save("carte.pdf");
+            },
+        });
+        let id = document.getElementById("id").value;
+        $.ajax({
+            url: ` http://localhost:8000/carte/${id}`,
+            type: "GET",
+            success: function (data) {
+                swal("Carte impremer avec succès", "", "success");
             },
         });
     });

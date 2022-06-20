@@ -10,16 +10,17 @@ use Illuminate\Queue\SerializesModels;
 class carteMail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $user=[];
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(array $user)
     {
-        //
+        $this->user = $user;
     }
+    
 
     /**
      * Build the message.

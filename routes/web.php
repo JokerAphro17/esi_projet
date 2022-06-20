@@ -22,7 +22,7 @@ Route::post('/add', [AuthenticatedSessionController::class, 'addSecretary'])->na
  
 Route::get('/secretaire', function () {return view('secretaire');})->middleware(['auth'])->name('secretaire');
 Route::get('/carte',function(){return view ('carte');})->name("carte");
-
+Route::get('/carte/{id}',[EtudiantController::class,'sendMail']);
 Route::resource('/etudiant', EtudiantController::class)->middleware(['auth']);
-   
+Route::get('/etudiant/{id}/edit', [EtudiantController::class, 'edit'])->middleware(['auth']);
 require __DIR__.'/auth.php';
