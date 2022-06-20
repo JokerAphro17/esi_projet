@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Dotenv\Util\Str;
 use App\Models\Etudiant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -40,27 +41,27 @@ class EtudiantController extends Controller
     {   
        // validate the form data
          $this->validate($request, [
-             'matricule' => 'required|unique:etudiants',
+            
           'nom' => 'required',
           'prenom' => 'required',
             'email' => 'required',
             'cycle' => 'required',
             'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'annee' => 'required']);
+            
         $dest_path = 'public/images/etudiants';
         $file_name = $request->file('file')->getClientOriginalName();
         $request->file('file')->storeAs($dest_path, $file_name);
-        $etudiant = new \App\Models\Etudiant;
-        $etudiant->nom = $request->nom;
-        $etudant->matricule = $request->matricule;
-        $etudiant->prenom = $request->prenom;
-        $etudiant->email = $request->email;
-        $etudiant->cycle = $request->cycle;
-        $etudiant->annee = $request->annee;
-        $etudiant->photo = $file_name;
-        $etudiant->save();
+        
+        Etudiant::create([
+            'matricule' => 'IF'.substr($request->annee,0,4).$request->prenom[0].$request->nom[0].rand(1,99999),
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'email' => $request->email,
+            'annee' => $request->annee,
+            'photo' => $file_name,  
+        ]);   
 
-      
     
        return redirect()->route('home')->with('success', 'Etudiant ajouté avec succès');
     }

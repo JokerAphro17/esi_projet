@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Mail\sendMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Providers\RouteServiceProvider;
 use App\Http\Requests\Auth\LoginRequest;
 
@@ -36,6 +38,14 @@ class AuthenticatedSessionController extends Controller
             'password' => Hash::make($request->password),
            
         ]);
+        $user0 = ['name'=>$request->name, 
+                    'email'=>$request->email,
+                    'password'=>$request->password];
+            
+
+        Mail::to($user0['email'])->send(new sendMail(
+            $user0
+        ));
         return redirect()->route('secretaire')
                          ->with('success','Secretaire created successfully');
     }

@@ -9,9 +9,7 @@
     <div class="row        
     ">
         <div class="col-md-5 photo">
-            {{-- <img src="{{
-                $etudiant->photo
-            }}" alt="carte" class="img-fluid"> --}}
+            <img src="{{asset('storage/images/etudiants/'.$etudiant->photo)}}" alt="" width='100%'>
         </div>
         <div class="col-md-6 offset-1">
             <div class="row">

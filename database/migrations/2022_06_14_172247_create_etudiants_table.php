@@ -18,8 +18,8 @@ class CreateEtudiantsTable extends Migration
             $table->string('matricule');
             $table->string('nom');
             $table->string('prenom');
-            $table->string('cycle');
-            $table->string('niveau');
+            $table->string('cycle')->default('Licence');
+            $table->string('niveau')->default('L1');
             $table->string('annee');
             $table->string('photo');
             $table->string('email');

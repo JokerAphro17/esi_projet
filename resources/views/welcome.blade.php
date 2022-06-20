@@ -57,7 +57,6 @@
                 </td>
             </tr>
             @endforeach
-
         </tbody>
     </table>
 </div>
@@ -76,9 +75,7 @@
             </ul>
         </div>
         @endif
-        <div class="form-group">
-            <input type="text" class="form-control" id="matricule" name="matricule" placeholder="Matricule">
-        </div>
+
         <div class="form-group">
             <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
         </div>
