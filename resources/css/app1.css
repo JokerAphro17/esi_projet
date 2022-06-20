@@ -8,7 +8,8 @@
 .carte{
     border : 1px solid #ccc;
     box-shadow: 0 0 8px #ccc;
- 
-    width: 3px;
-    height: 204px; 
+    width: 550px;
+    height: 350px;
+    /* width: 321px;
+    height: 204px; */
 }   

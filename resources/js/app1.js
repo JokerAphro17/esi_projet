@@ -4,6 +4,7 @@ import "admin-lte/plugins/bootstrap/js/bootstrap.bundle.min";
 import "admin-lte/dist/js/adminlte.min";
 import "admin-lte/plugins/datatables/jquery.dataTables.js";
 import jspdf from "jspdf";
+import { get } from "lodash";
 $("#btn").click(function () {
     $("#list").toggleClass("d-none");
     if ($("#list").hasClass("d-none")) {
@@ -26,23 +27,16 @@ $("#btn1").click(function () {
     }
     $("#form1").toggleClass("d-none");
 });
+var carte = document.getElementById("carte");
 $(document).ready(function () {
     $("#btn-pdf").click(function () {
-        var doc = new jspdf();
-        // create a identity card
-        doc.setFontSize(20);
-
-        doc.setPageSize([, 210]);
-        doc.setTextColor(0, 0, 0);
-        doc.text(20, 20, "IDENTITE");
-        doc.setFontSize(15);
-        doc.setTextColor(0, 0, 0);
-        doc.text(20, 30, "Nom : " + $("#nom").val());
-        doc.text(20, 40, "Prenom : " + $("#prenom").val());
-        doc.text(20, 50, "Date de naissance : " + $("#date").val());
-        doc.text(20, 60, "Adresse : " + $("#adresse").val());
-        doc.text(20, 70, "Email : " + $("#email").val());
-        doc.text(20, 80, "Telephone : " + $("#telephone").val());
-        doc.save("identite.pdf");
+        var doc = new jspdf("l", "px", "a4");
+        doc.html(carte, {
+            callback: function (doc) {
+                doc.save("carte.pdf");
+            },
+        });
     });
 });
+
+//margin top, left, right, bottom
