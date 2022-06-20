@@ -21,6 +21,8 @@
     },
     "dependencies": {
         "admin-lte": "^3.0",
+        "fakeloader": "^1.0.0",
+        "jq-fakeloader": "^2.0.1",
         "jspdf": "^2.5.1",
         "sweetalert": "^2.1.2"
     }

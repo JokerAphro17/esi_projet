@@ -72,5 +72,7 @@
     <i class="fa-solid fa-file-pdf"></i>
     IMPRIMER
 </div>
+<div class="fakeLoader"></div>
+
 
 @endsection

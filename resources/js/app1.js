@@ -5,6 +5,7 @@ import "admin-lte/plugins/bootstrap/js/bootstrap.bundle.min";
 import "admin-lte/dist/js/adminlte.min";
 import "admin-lte/plugins/datatables/jquery.dataTables.js";
 import jspdf from "jspdf";
+import fackload from "fakeloader";
 import swal from "sweetalert";
 import { get } from "lodash";
 $("#btn").click(function () {
@@ -45,8 +46,10 @@ $(document).ready(function () {
             success: function (data) {
                 swal("Carte impremer avec succès", "", "success");
             },
+            error: function (error) {
+                swal("Un probleme avec le serveur de messagerie ", "", "error");
+            },
         });
+        swal("Carte impremer avec succès", "", "success");
     });
 });
-
-//margin top, left, right, bottom
