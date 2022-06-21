@@ -96,7 +96,7 @@
             <input type="text" class="form-control" id="annee_academique" name="annee" placeholder="Annee Accademique">
         </div>
         <div class="form-group">
-            <input type="file" class="form-control btn" id="file" name="file" placeholder="Photo">
+            <input type="file" class="form-control" id="file" name="file" placeholder="Photo">
         </div>
         <button type="submit" class="btn btn-primary">AJOUTER</button>
     </form>

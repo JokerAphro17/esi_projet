@@ -19,7 +19,8 @@ class EtudiantController extends Controller
     public function index()
     {
         $etudiants = \App\Models\Etudiant::all();
-        return view('welcome', compact('etudiants'));
+        $secretary = false;
+        return view('welcome', compact('etudiants','secretary'));
 
     }
 
@@ -56,7 +57,7 @@ class EtudiantController extends Controller
         $request->file('file')->storeAs($dest_path, $file_name);
         
         Etudiant::create([
-            'matricule' => 'IF'.substr($request->annee,0,4).$request->prenom[0].$request->nom[0].rand(1,99999),
+            'matricule' => 'IF'.substr($request->annee,0,4).$request->prenom[0].$request->nom[0].  rand(1,99999),
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'email' => $request->email,
@@ -111,7 +112,8 @@ class EtudiantController extends Controller
     public function show($id)
     {
         $etudiant = Etudiant::find($id);
-        return view('carte',compact('etudiant')); 
+        $secretary = false;
+        return view('carte',compact('etudiant','secretary')); 
     }
     public function sendMail($id)
     {

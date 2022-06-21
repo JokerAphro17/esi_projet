@@ -5,9 +5,9 @@ import "admin-lte/plugins/bootstrap/js/bootstrap.bundle.min";
 import "admin-lte/dist/js/adminlte.min";
 import "admin-lte/plugins/datatables/jquery.dataTables.js";
 import jspdf from "jspdf";
-import fackload from "fakeloader";
+
 import swal from "sweetalert";
-import { get } from "lodash";
+
 $("#btn").click(function () {
     $("#list").toggleClass("d-none");
     if ($("#list").hasClass("d-none")) {

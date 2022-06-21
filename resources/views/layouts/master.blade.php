@@ -28,7 +28,6 @@
                         <i class="fas fa-th-logout"></i>
                     </a>
                 </li>
-
             </ul>
             <form action="{{route('logout')}}" method="post">
                 @csrf
@@ -37,7 +36,6 @@
                         "></i></button>
             </form>
         </nav>
-
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="/" class="brand-link">
                 <img src="{{asset('logo.jpeg')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-5"
@@ -67,20 +65,16 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/" class="nav-link active">
+                                    <a href="/" @if($secretary) class="nav-link" @else class="nav-link active" @endif>
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>GESTION DES ETUDIANT</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{route('carte')}}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>GESTIONS DES CARTES</p>
-                                    </a>
-                                </li>
+
                                 @if(auth()->user()->role_id)
                                 <li class="nav-item">
-                                    <a href="{{route('secretaire')}}" class="nav-link">
+                                    <a href="{{route('secretaire')}}" @if($secretary) class="nav-link active" @else
+                                        class="nav-link" @endif>
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>AJOUT D'UN SECRETAIRE</p>
                                     </a>
