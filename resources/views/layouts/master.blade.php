@@ -12,7 +12,6 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
 
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -51,8 +50,6 @@
                         <a href="#" class="d-block">{{auth()->user()->name}}</a>
                     </div>
                 </div>
-
-
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
@@ -66,18 +63,26 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/" @if($secretary) class="nav-link" @else class="nav-link active" @endif>
+                                    <a href="/" @if( $list ?? '' ) class="nav-link active " @else class="nav-link "
+                                        @endif>
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>GESTION DES ETUDIANT</p>
+                                        <p>LISTE ET CARTES</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('etudiant.create')}}" @if($stud ?? '' ) class="nav-link active"
+                                        @else class="nav-link " @endif>
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>AJOUTER UN ETUDIANT </p>
                                     </a>
                                 </li>
 
                                 @if(auth()->user()->role_id)
                                 <li class="nav-item">
-                                    <a href="{{route('secretaire')}}" @if($secretary) class="nav-link active" @else
-                                        class="nav-link" @endif>
+                                    <a href="{{route('secretaire.index')}}" @if($secretary ?? '' )
+                                        class="nav-link active" @else class="nav-link" @endif>
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>AJOUT D'UN SECRETAIRE</p>
+                                        <p>NOUVEAU SECRETAIRE</p>
                                     </a>
                                 </li>
                                 @endif

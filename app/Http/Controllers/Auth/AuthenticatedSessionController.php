@@ -23,32 +23,7 @@ class AuthenticatedSessionController extends Controller
     {
         return view('auth.login');
     }
-    public function addSecretary(Request $request)
-    {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
-
-        $user = User::create([
-            'role_id' => 0,
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-           
-        ]);
-        $user0 = ['name'=>$request->name, 
-                    'email'=>$request->email,
-                    'password'=>$request->password];
-            
-
-        Mail::to($user0['email'])->send(new sendMail(
-            $user0
-        ));
-        return redirect()->route('secretaire')
-                         ->with('success','Secretaire created successfully');
-    }
+   
     /**
      * Handle an incoming authentication request.
      *

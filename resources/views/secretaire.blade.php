@@ -1,12 +1,9 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="row justify-content-evenly">
+<div class="row">
     <div class="col-md-6">
-        <h3 id="title2"></h3>
-    </div>
-    <div class="col-md-6">
-        <div id="btn1" class="btn btn-primary float-right">LISTE DES SECRETAIRE</div>
+        <div id="btn1" class="btn btn-primary ">LISTE DES SECRETAIRE</div>
     </div>
 </div>
 <div class="card-body table-responsive p-3 d-none" id="list1" style="height: 500px;">
@@ -14,40 +11,34 @@
         <thead>
             <tr>
                 <th>Nom</th>
-                <th>Prenom</th>
                 <th>Email</th>
-                <th>Action</th>
+                <th>Role</th>
             </tr>
         </thead>
         <tbody>
+            @foreach ($users as $user)
             <tr>
-                <td>BOUKHARI</td>
-                <td>Abdou</td>
+                <td>{{
+                    $user->name
+                    }}</td>
                 <td>
-                    {{-- <a href="mailto: --}}
-                    {{-- {{ $secretaire->email }}">{{ $secretaire->email }}</a> --}}
-                </td>
-                <td>
-                    {{-- <a href="{{ route('etudiant.edit', $etudiant->id) }}" class="btn btn-primary">Modifier</a>
-                    <form action="{{ route('etudiant.destroy', $etudiant->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Supprimer</button>
-                    </form> --}}
-                </td>
+                    {{
+                    $user->email
+                    }}</td>
+                <td> {{$user->role_id ? 'Administrateur': 'Secretaire'}}</td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
 <div class="card-body" id="form1" class="row justify-content-center">
-    <form action="/add" method="POST" class="p-5 form col-6 offset-3 ">
+    <form action="{{route('secretaire.store')}}" method="POST" class="p-5 form col-6 offset-3 ">
         @csrf
         <h2 class="text-center">FORMULAIRE D'INSCRIPTION</h2>
 
         <div class="form-group">
             <input type="text" class="form-control" id="nom" name="name" placeholder="Nom">
         </div>
-
         <div class="form-group">
             <input type="email" class="form-control" id="email" name="email" placeholder="Email">
         </div>
@@ -61,4 +52,7 @@
         <div class="form-group col-md-12 justify-content-center">
             <button type="submit" class="btn btn-primary">Enregistrer</button>
         </div>
-        @endsection
+    </form>
+</div>
+
+@endsection

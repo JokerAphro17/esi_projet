@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EtudiantController;
+use App\Http\Controllers\SecretaireController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
@@ -18,18 +19,10 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::get('/', [EtudiantController::class,'index'])->middleware(['auth'])->name('home');
 
-Route::post('/add', [AuthenticatedSessionController::class, 'addSecretary'])->name('sec');
 
  
-Route::get('/secretaire', function () {
-    if(!Auth()->user()->role_id){
+Route::resource('secretaire', SecretaireController::class)->middleware(['auth']);
 
-        return redirect()->route('home'); }
-    else{
-        $secretary = true;
-        return view('secretaire',compact('secretary'));}
-    }
-    )->middleware(['auth'])->name('secretaire');  
 Route::get('/carte/{id}',[EtudiantController::class,'sendMail']);
 Route::resource('/etudiant', EtudiantController::class)->middleware(['auth']);
 Route::get('/etudiant/{id}/edit', [EtudiantController::class, 'edit'])->middleware(['auth']);

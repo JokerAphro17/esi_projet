@@ -19,8 +19,8 @@ class EtudiantController extends Controller
     public function index()
     {
         $etudiants = \App\Models\Etudiant::all();
-        $secretary = false;
-        return view('welcome', compact('etudiants','secretary'));
+        $list=true;
+        return view('welcome', compact('etudiants','list'));
 
     }
 
@@ -31,7 +31,9 @@ class EtudiantController extends Controller
      */
     public function create()
     {
-       
+      
+       $stud = true;
+       return view('ajout', compact('stud'));
     }
 
     /**
@@ -110,8 +112,7 @@ class EtudiantController extends Controller
     public function show($id)
     {
         $etudiant = Etudiant::find($id);
-        $secretary = false;
-        return view('carte',compact('etudiant','secretary')); 
+        return view('carte',compact('etudiant'));
     }
     public function sendMail($id)
     {
