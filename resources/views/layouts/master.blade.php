@@ -11,11 +11,12 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
-
+    <script src="{{asset('js/sweetalert.min.js')}}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{asset('css/app1.css')}}" />
+
 </head>
 
 <b class="hold-transition sidebar-mini">
@@ -118,7 +119,7 @@
 
 </html>
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js">
-    </scr>
+</script>
 <script defer>
     $(document).ready( function () {
     $('#myTable').DataTable();

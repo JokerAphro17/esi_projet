@@ -77,8 +77,14 @@ class EtudiantController extends Controller
      */
     public function edit($id)
     {
-        $etudiant = Etudiant::find($id);
-        return view('carte',compact('etudiant')); 
+        if(Auth()->user()->role_id)
+        {
+            $etudiant = Etudiant::find($id);
+            return view('edit', compact('etudiant'));
+        }
+        else{
+            return redirect()->route('home');
+        }
     }
 
     /**
@@ -90,10 +96,14 @@ class EtudiantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $etudiant = Etudiant::find($id);
-        $etudiant->update($request->all());
-        return redirect()->route('home')
-                        ->with('success','Etudiant updated successfully');
+        if(Auth()->user()->role_id){
+            return redirect()->back();
+        }
+        else {
+            $etudiant = Etudiant::find($id);
+            $etudiant->update($request->all());
+            return redirect()->route('home')->with('success', 'Etudiant modifié avec succès');
+        }
     }
 
     /**
@@ -103,11 +113,17 @@ class EtudiantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {   if(Auth()->user()->role_id){
+         
         $etudiant = Etudiant::find($id);
         $etudiant->delete();
-        return redirect()->route('home')
-                        ->with('success','Etudiant deleted successfully');
+        return redirect()->route('home')->with('success', 'Etudiant supprimé avec succès');
+    }
+    else{
+        return redirect()->route('home');
+    }
+
+        
     }
     public function show($id)
     {

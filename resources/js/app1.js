@@ -1,12 +1,10 @@
 require("./bootstrap");
-require("./sweetalert.min");
+require("../../public/js/sweetalert.min");
 import "admin-lte/plugins/jquery/jquery.min";
 import "admin-lte/plugins/bootstrap/js/bootstrap.bundle.min";
 import "admin-lte/dist/js/adminlte.min";
 import "admin-lte/plugins/datatables/jquery.dataTables.js";
 import jspdf from "jspdf";
-
-import swal from "sweetalert";
 
 $("#btn1").click(function () {
     $("#list1").toggleClass("d-none");
@@ -43,3 +41,4 @@ $(document).ready(function () {
         });
     });
 });
+

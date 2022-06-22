@@ -48,7 +48,7 @@
                         <i class="fas fa-edit  " style="font-size: 35px"></i>
                     </a>
                     <span id="deleteStudent" class="deleteStudent m-3 text-danger" style="cursor: pointer;"
-                        data-id="{{ $etudiant->id }}">
+                        value="{{ $etudiant->id }}">
                         <i class="fas fa-trash-alt" style="font-size: 35px"></i>
                     </span>
                     @endif
