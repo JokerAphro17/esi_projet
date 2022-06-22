@@ -10,11 +10,11 @@
 
 <body>
     <h1>Carte disponible</h1>
-    <p>Bonjour chere {{$user['nom']}} {{$user['prenom']}} votre carte est disponible vous pouvez passé su lundi au
+    <p>Bonjour cher(e) {{$user['nom']}} {{$user['prenom']}} votre carte est disponible vous pouvez passer du lundi au
         vendredi
         de 9h à 17h pour la
         recuperer</p>
-    <p>Votre Matricul est :<strong> {{$user['matricule']}}</strong></p>
+    <p>Votre Matricule est :<strong> {{$user['matricule']}}</strong></p>
 
     <p>Bonne journée</p>
     <p>L'equipe ESI</p>

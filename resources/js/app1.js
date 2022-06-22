@@ -4,6 +4,7 @@ import "admin-lte/plugins/jquery/jquery.min";
 import "admin-lte/plugins/bootstrap/js/bootstrap.bundle.min";
 import "admin-lte/dist/js/adminlte.min";
 import "admin-lte/plugins/datatables/jquery.dataTables.js";
+import "jq-fakeloader/dist/fakeLoader.min.js";
 import jspdf from "jspdf";
 
 import swal from "sweetalert";
@@ -33,23 +34,25 @@ $("#btn1").click(function () {
 var carte = document.getElementById("carte");
 $(document).ready(function () {
     $("#btn-pdf").click(function () {
+        $.fakeLoader();
         var doc = new jspdf("l", "px", "a4");
         doc.html(carte, {
             callback: function (doc) {
                 doc.save("carte.pdf");
             },
+        }).then(function () {
+            swal("Carte créée avec succès", "", "success");
         });
         let id = document.getElementById("id").value;
         $.ajax({
             url: ` http://localhost:8000/carte/${id}`,
             type: "GET",
             success: function (data) {
-                swal("Carte impremer avec succès", "", "success");
+                swal("Mail e envoyé avec a l'etudiant", "", "success");
             },
             error: function (error) {
                 swal("Un probleme avec le serveur de messagerie ", "", "error");
             },
         });
-        swal("Carte impremer avec succès", "", "success");
     });
 });

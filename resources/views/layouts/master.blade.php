@@ -11,11 +11,12 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{asset('css/app1.css')}}" />
-    @livewireStyles
 </head>
 
 <b class="hold-transition sidebar-mini">
@@ -102,15 +103,17 @@
         </footer>
     </div>
 
-    <script src="{{asset('js/app1.js')}}"></script>
+    <script src="{{asset('js/app1.js')}}" defer>
+    </script>
 
-    @livewireScripts
 
     </body>
     @include('flash-message')
+    <link rel="stylesheet" href="{{asset('jq-fakeloader/dist/fakeLoader.min.css')}}">
 
 </html>
-<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js">
+    </scr>
 <script defer>
     $(document).ready( function () {
     $('#myTable').DataTable();

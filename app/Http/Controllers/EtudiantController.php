@@ -64,8 +64,6 @@ class EtudiantController extends Controller
             'annee' => $request->annee,
             'photo' => $file_name,  
         ]);   
-
-    
        return redirect()->route('home')->with('success', 'Etudiant ajouté avec succès');
     }
 

@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-6 offset-1">
             <div class="row">
-                <div class="col-md-12  ">
+                <div class="col-md-12">
                     <p class="fw-bold ">Matricule :
                         {{$etudiant->matricule}}
                     </p>
@@ -68,11 +68,11 @@
     </div>
 </div>
 <input id="id" type="hidden" value="{{$etudiant->id}}">
-<div id="btn-pdf" class="btn btn-primary">
+
+<div id="btn-pdf" class="btn btn-primary" style="cursor:pointer">
     <i class="fa-solid fa-file-pdf"></i>
     IMPRIMER
 </div>
-<div class="fakeLoader"></div>
 
 
 @endsection
