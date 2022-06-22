@@ -7,7 +7,6 @@
 
 <body>
     <div class="container">
-        <h1>Compte creer avec success!</h1>
         <h2>Voici vos differents information de connexion </h2>
         <div class="row">
             <div class="col-md-6">

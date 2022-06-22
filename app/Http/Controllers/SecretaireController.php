@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Mail\sendMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class SecretaireController extends Controller
 {
@@ -65,7 +68,7 @@ class SecretaireController extends Controller
             Mail::to($user0['email'])->send(new sendMail(
                 $user0
             ));
-            return redirect()->route('secretaire')
+            return redirect()->route('secretaire.index')
                              ->with('success','Secretaire created successfully');
         
     }

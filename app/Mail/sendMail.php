@@ -20,9 +20,6 @@ class sendMail extends Mailable
     {
         $this->user = $user;
     }
-    
-        //
-    
 
     /**
      * Build the message.
@@ -33,6 +30,6 @@ class sendMail extends Mailable
     {
         return $this->from('aphrocg@hotmail.com')
                     ->subject('Bienvenue sur l\'application de gestion des étudiants')
-                    ->view('mails.mailsec');
+                    ->markdown('mail.mailer');
     }
 }

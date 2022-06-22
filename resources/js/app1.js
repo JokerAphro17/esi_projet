@@ -22,7 +22,6 @@ $("#btn1").click(function () {
 var carte = document.getElementById("carte");
 $(document).ready(function () {
     $("#btn-pdf").click(function () {
-        $.fakeLoader();
         var doc = new jspdf("l", "px", "a4");
         doc.html(carte, {
             callback: function (doc) {

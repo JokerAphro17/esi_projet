@@ -9,7 +9,29 @@
     border : 1px solid #ccc;
     box-shadow: 0 0 8px #ccc;
     width: 550px;
-    height: 350px;
-    /* width: 321px;
-    height: 204px; */
-}   
+    height: 300px;
+    
+} 
+.carte img{
+    margin-top: 20px;
+    width: 150px;
+    height: 50%;
+
+}
+.conte{
+    justify-content: center;
+    align-items: center;
+    padding-left: 160px;
+}
+#btn-pdf{
+    background-color: #00a65a;
+    color: white;
+    border-color: #00a65a;
+    margin-left: 290px;
+}
+.gauche{
+    margin-left: 30px;
+}
+.infos{
+    margin-top:20px;
+}

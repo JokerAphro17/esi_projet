@@ -10,7 +10,7 @@ use Illuminate\Queue\SerializesModels;
 class carteMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $user=[];
+    public $stud=[];
     /**
      * Create a new message instance.
      *
@@ -18,7 +18,7 @@ class carteMail extends Mailable
      */
     public function __construct(array $user)
     {
-        $this->user = $user;
+        $this->stud = $user;
     }
     
 
@@ -31,6 +31,6 @@ class carteMail extends Mailable
     {
         return $this->from('aphrocg@hotmail.com')
                     ->subject('Carte Etudiant disponible')
-                    ->view('mails.carte');
+                    ->markdown('mail.mailer');
     }
 }

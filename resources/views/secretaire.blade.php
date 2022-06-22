@@ -32,22 +32,22 @@
     </table>
 </div>
 <div class="card-body" id="form1" class="row justify-content-center">
-    <form action="{{route('secretaire.store')}}" method="POST" class="p-5 form col-6 offset-3 ">
+    <form action="{{route('secretaire.store')}}" method="POST" id="sendForm" class="p-5 form col-6 offset-3 ">
         @csrf
         <h2 class="text-center">FORMULAIRE D'INSCRIPTION</h2>
 
         <div class="form-group">
-            <input type="text" class="form-control" id="nom" name="name" placeholder="Nom">
+            <input type="text" class="form-control" id="nom" name="name" placeholder="Nom" required>
         </div>
         <div class="form-group">
-            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
         </div>
         <div class="form-group">
             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation"
-                placeholder="Confirm Password">
+                placeholder="Confirm Password" required>
         </div>
         <div class="form-group col-md-12 justify-content-center">
             <button type="submit" class="btn btn-primary">Enregistrer</button>
