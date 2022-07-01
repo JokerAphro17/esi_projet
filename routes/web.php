@@ -24,5 +24,6 @@ Route::get('/', [EtudiantController::class, 'index'])->middleware(['auth'])->nam
 Route::resource('secretaire', SecretaireController::class)->middleware(['auth']);
 
 Route::get('/carte/{id}', [EtudiantController::class, 'sendMail'])->middleware(['auth']);
+Route::post('/etudiant/update/{id}', [EtudiantController::class, 'update'])->name('etudiant.modif')->middleware(['auth']);
 Route::resource('/etudiant', EtudiantController::class)->middleware(['auth']);
 require __DIR__ . '/auth.php';

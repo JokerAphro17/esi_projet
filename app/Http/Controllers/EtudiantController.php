@@ -103,7 +103,7 @@ class EtudiantController extends Controller
             'prenom' => 'required',
             'email' => 'required',
             'cycle' => 'required',
-            'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'annee' => 'required'
         ]);
             $etudiant = Etudiant::find($id);
@@ -119,6 +119,7 @@ class EtudiantController extends Controller
                 $etudiant->photo = $file_name;
             }
             $etudiant->save();
+            return redirect()->route('home')->with('success', 'Etudiant modifié avec succès');
       
     }
 

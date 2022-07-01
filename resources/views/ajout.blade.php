@@ -1,8 +1,8 @@
 @extends('layouts.master')
 @section('content')
 <div class="card-body" id="form" class="row justify-content-center">
-    <form enctype="multipart/form-data" action="{{route('etudiant.store')}}" method="POST"
-        class="p-5 form col-6 offset-3">
+    <form enctype="multipart/form-data" @if($etudiant ?? '' ) action="{{route('etudiant.modif',$etudiant->id)}}"
+        method="POST" @else action="{{route('etudiant.store')}}" method="POST" @endif class="p-5 form col-6 offset-3">
         @csrf
         <h2 id="title">
             @if($etudiant ?? '')
