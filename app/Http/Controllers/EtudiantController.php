@@ -134,9 +134,9 @@ class EtudiantController extends Controller
         if(Gate::allows('isAdmin')){
             $etudiant = Etudiant::find($id);
             $etudiant->delete();
-            return redirect()->route('home')->with('success', 'Etudiant supprimé avec succès');
         }
-            return redirect()->route('home');
+        return json_encode(['success' => "Vous n'avez pas le droit d'effectuer cette action"]);
+            
     
     }
     public function show($id)

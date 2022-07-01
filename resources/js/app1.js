@@ -41,3 +41,40 @@ $(document).ready(function () {
         });
     });
 });
+function delet(id) {
+    swal({
+        title: "Etes-vous sûr?",
+        text: "Vous allez supprimer definitivement l'abonné!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    }).then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                url: "etudiant/" + id,
+                type: "DELETE",
+                data: {
+                    _token: $("input[name='_token']").val(),
+                },
+                success: function (data) {
+                    swal("Succès! l'etudiant a été supprimer avec success!", {
+                        icon: "success",
+                    });
+                    $("#" + id).remove();
+                },
+                error: function (data) {
+                    console.log(data);
+                },
+            });
+        } else {
+            swal("l'étudiant n'a pas été supprimer!");
+        }
+    });
+}
+let delet_btn = document.getElementsByClassName("deleteStudent");
+
+for (let i = 0; i < delet_btn.length; i++) {
+    delet_btn[i].addEventListener("click", function () {
+        delet(delet_btn[i].id);
+    });
+}

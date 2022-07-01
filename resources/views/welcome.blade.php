@@ -23,7 +23,7 @@
         </thead>
         <tbody>
             @foreach ($etudiants as $etudiant)
-            <tr>
+            <tr id="{{$etudiant->id}}">
                 <td>{{
                     $etudiant->matricule
                     }}</td>
@@ -47,8 +47,7 @@
                     <a href="{{ route('etudiant.edit', $etudiant->id) }}">
                         <i class="fas fa-edit  " style="font-size: 35px"></i>
                     </a>
-                    <span id="deleteStudent" class="deleteStudent m-3 text-danger" style="cursor: pointer;"
-                        value="{{ $etudiant->id }}">
+                    <span class="deleteStudent m-3 text-danger" style="cursor: pointer;" id="{{ $etudiant->id }}">
                         <i class="fas fa-trash-alt" style="font-size: 35px"></i>
                     </span>
                     @endif
