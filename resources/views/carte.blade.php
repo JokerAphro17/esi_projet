@@ -4,7 +4,7 @@
     <div class="carte m-5 p-2 " id="carte">
         <div class="row bg-success ">
             <div class="col-md-10 text-center  offset-1">
-                <h3>CARTE D'ETUDIANT &nbsp &nbsp UNB/ESI</h3>
+                <h3>CARTE &nbsp &nbsp D'ETUDIANT &nbsp &nbsp UNB/ESI</h3>
             </div>
         </div>
         <div class="row infos">

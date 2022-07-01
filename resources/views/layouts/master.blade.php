@@ -77,8 +77,7 @@
                                         <p>AJOUTER UN ETUDIANT </p>
                                     </a>
                                 </li>
-
-                                @if(auth()->user()->role_id)
+                                @can('isAdmin')
                                 <li class="nav-item">
                                     <a href="{{route('secretaire.index')}}" @if($secretary ?? '' )
                                         class="nav-link active" @else class="nav-link" @endif>
@@ -86,7 +85,7 @@
                                         <p>NOUVEAU SECRETAIRE</p>
                                     </a>
                                 </li>
-                                @endif
+                                @endcan
                             </ul>
                         </li>
 

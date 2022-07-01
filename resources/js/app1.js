@@ -33,7 +33,7 @@ $(document).ready(function () {
             url: ` http://localhost:8000/carte/${id}`,
             type: "GET",
             success: function (data) {
-                swal("Mail e envoyé avec a l'etudiant", "", "success");
+                swal("Mail envoyé avec a l'etudiant", "", "success");
             },
             error: function (error) {
                 swal("Un probleme avec le serveur de messagerie ", "", "error");
@@ -41,4 +41,3 @@ $(document).ready(function () {
         });
     });
 });
-

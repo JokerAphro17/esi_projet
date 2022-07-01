@@ -1,12 +1,12 @@
 @component('mail::message')
 @component('mail::panel')
-@if($user ?? '')
+@if($secretary ?? false)
 COMPTE SECRETAIRE CREER
 @else
 CARTE ETUDIANT DISPONIBE
 @endif
 @endcomponent
-@if($user ?? '')
+@if($secretary ?? false)
 @include('mails.mailsec')
 @else
 @include('mails.carte')

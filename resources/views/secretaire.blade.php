@@ -34,6 +34,15 @@
 <div class="card-body" id="form1" class="row justify-content-center">
     <form action="{{route('secretaire.store')}}" method="POST" id="sendForm" class="p-5 form col-6 offset-3 ">
         @csrf
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <h2 class="text-center">FORMULAIRE D'INSCRIPTION</h2>
 
         <div class="form-group">

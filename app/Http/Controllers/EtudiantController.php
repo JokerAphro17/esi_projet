@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Dotenv\Util\Str;
-use App\Mail\carteMail;
+use App\Mail\CarteMail;
 use App\Models\Etudiant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
@@ -19,9 +20,8 @@ class EtudiantController extends Controller
     public function index()
     {
         $etudiants = \App\Models\Etudiant::all();
-        $list=true;
-        return view('welcome', compact('etudiants','list'));
-
+        $list = true;
+        return view('welcome', compact('etudiants', 'list'));
     }
 
     /**
@@ -31,9 +31,9 @@ class EtudiantController extends Controller
      */
     public function create()
     {
-      
-       $stud = true;
-       return view('ajout', compact('stud'));
+
+        $stud = true;
+        return view('ajout', compact('stud'));
     }
 
     /**
@@ -43,30 +43,31 @@ class EtudiantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-       // validate the form data
-         $this->validate($request, [
-            
-          'nom' => 'required',
-          'prenom' => 'required',
+    {
+        // validate the form data
+        $this->validate($request, [
+
+            'nom' => 'required',
+            'prenom' => 'required',
             'email' => 'required',
             'cycle' => 'required',
             'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'annee' => 'required']);
-            
+            'annee' => 'required'
+        ]);
+
         $dest_path = 'public/images/etudiants';
         $file_name = $request->file('file')->getClientOriginalName();
         $request->file('file')->storeAs($dest_path, $file_name);
-        
+
         Etudiant::create([
-            'matricule' => 'IF'.substr($request->annee,0,4).$request->prenom[0].$request->nom[0].  rand(1,99999),
+            'matricule' => 'IF' . substr($request->annee, 0, 4) . $request->prenom[0] . $request->nom[0] .  rand(1, 99999),
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'email' => $request->email,
             'annee' => $request->annee,
-            'photo' => $file_name,  
-        ]);   
-       return redirect()->route('home')->with('success', 'Etudiant ajouté avec succès');
+            'photo' => $file_name,
+        ]);
+        return redirect()->route('home')->with('success', 'Etudiant ajouté avec succès');
     }
 
     /**
@@ -77,14 +78,13 @@ class EtudiantController extends Controller
      */
     public function edit($id)
     {
-        if(Auth()->user()->role_id)
-        {
+        if(Gate::allows('isAdmin')){
             $etudiant = Etudiant::find($id);
-            return view('edit', compact('etudiant'));
+            $stud = true;
+            return view('ajout', compact('etudiant', 'stud'));
         }
-        else{
             return redirect()->route('home');
-        }
+       
     }
 
     /**
@@ -95,15 +95,31 @@ class EtudiantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        if(Auth()->user()->role_id){
-            return redirect()->back();
+    {   if(Gate::denies('isAdmin')){
+            return redirect()->route('home');
         }
-        else {
+        $this->validate($request, [
+            'nom' => 'required',
+            'prenom' => 'required',
+            'email' => 'required',
+            'cycle' => 'required',
+            'file' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'annee' => 'required'
+        ]);
             $etudiant = Etudiant::find($id);
-            $etudiant->update($request->all());
-            return redirect()->route('home')->with('success', 'Etudiant modifié avec succès');
-        }
+            $etudiant->nom = $request->nom;
+            $etudiant->prenom = $request->prenom;
+            $etudiant->email = $request->email;
+            $etudiant->annee = $request->annee;
+            $etudiant->cycle = $request->cycle;
+            if ($request->hasFile('file')) {
+                $dest_path = 'public/images/etudiants';
+                $file_name = $request->file('file')->getClientOriginalName();
+                $request->file('file')->storeAs($dest_path, $file_name);
+                $etudiant->photo = $file_name;
+            }
+            $etudiant->save();
+      
     }
 
     /**
@@ -113,33 +129,26 @@ class EtudiantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {   if(Auth()->user()->role_id){
-         
-        $etudiant = Etudiant::find($id);
-        $etudiant->delete();
-        return redirect()->route('home')->with('success', 'Etudiant supprimé avec succès');
-    }
-    else{
-        return redirect()->route('home');
-    }
-
-        
+    {
+        if(Gate::allows('isAdmin')){
+            $etudiant = Etudiant::find($id);
+            $etudiant->delete();
+            return redirect()->route('home')->with('success', 'Etudiant supprimé avec succès');
+        }
+            return redirect()->route('home');
+    
     }
     public function show($id)
     {
         $etudiant = Etudiant::find($id);
-        return view('carte',compact('etudiant'));
+        return view('carte', compact('etudiant'));
     }
     public function sendMail($id)
     {
         $etudiant = Etudiant::find($id);
-        $user = ['nom'=>$etudiant->nom,
-                    'prenom'=>$etudiant->prenom, 
-                    'email'=>$etudiant->email,
-                    'matricule'=>$etudiant->matricule];
-        Mail::to($user['email'])->send(new carteMail(
-            $user
-        ));
         
+        Mail::to($etudiant->email)->send(new CarteMail(
+            $etudiant
+        ));
     }
 }

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Mail\sendMail;
+use App\Mail\SecMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -16,17 +17,19 @@ class SecretaireController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $secretary = true;
-        if(!Auth()->user()->role_id){
-
-            return redirect()->route('home'); }
-        else{
+    {
+        $secretary = true;
+        if(Gate::allows('isAdmin')){
+            $users = User::all();
+            return view('secretaire', compact('users', 'secretary'));
+        }
+         else {
             $secretary = true;
             $users = User::All();
-            return view('secretaire',compact('secretary','users'));
+            return view('secretaire', compact('secretary', 'users'));
         }
-        }
-    
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -35,7 +38,6 @@ class SecretaireController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -46,31 +48,26 @@ class SecretaireController extends Controller
      */
     public function store(Request $request)
     {
-       
-            $this->validate($request, [
-                'name' => 'required|string|max:255',
-                'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:6|confirmed',
-            ]);
-    
-            $user = User::create([
-                'role_id' => 0,
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-               
-            ]);
-            $user0 = ['name'=>$request->name, 
-                        'email'=>$request->email,
-                        'password'=>$request->password];
-                
-    
-            Mail::to($user0['email'])->send(new sendMail(
-                $user0
-            ));
-            return redirect()->route('secretaire.index')
-                             ->with('success','Secretaire created successfully');
+
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $user = User::create([
+            'role_id' => 0,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+
+        ]);
         
+        $user->password = $request->password;
+
+        Mail::to($user->email)->send(new SecMail($user));
+        return redirect()->route('secretaire.index')
+            ->with('success', 'Secretaire created successfully');
     }
 
     /**
@@ -81,7 +78,7 @@ class SecretaireController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -92,7 +89,7 @@ class SecretaireController extends Controller
      */
     public function edit($id)
     {
-        //
+    
     }
 
     /**
@@ -104,7 +101,7 @@ class SecretaireController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -115,6 +112,6 @@ class SecretaireController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

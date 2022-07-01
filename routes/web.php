@@ -17,13 +17,12 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 |
 */
 
-Route::get('/', [EtudiantController::class,'index'])->middleware(['auth'])->name('home');
+Route::get('/', [EtudiantController::class, 'index'])->middleware(['auth'])->name('home');
 
 
- 
+
 Route::resource('secretaire', SecretaireController::class)->middleware(['auth']);
 
-Route::get('/carte/{id}',[EtudiantController::class,'sendMail'])->middleware(['auth']);
+Route::get('/carte/{id}', [EtudiantController::class, 'sendMail'])->middleware(['auth']);
 Route::resource('/etudiant', EtudiantController::class)->middleware(['auth']);
-Route::get('/etudiant/{id}/edit', [EtudiantController::class, 'edit'])->middleware(['auth']);
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

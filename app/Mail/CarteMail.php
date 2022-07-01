@@ -2,25 +2,27 @@
 
 namespace App\Mail;
 
+use App\Models\User;
+use App\Models\Etudiant;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class carteMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $stud=[];
+    public $stud;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(array $user)
+    public function __construct(Etudiant $etudiant)
     {
-        $this->stud = $user;
+        $this->stud = $etudiant;
     }
-    
+
 
     /**
      * Build the message.
